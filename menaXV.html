@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación a mis XV Años</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    #txt1{
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(255, 255, 255);
+        font-style: italic;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem;
+      position: relative;
+      overflow-x: hidden; /* permite scroll vertical */
+    }
+
+    /* Fondo con bolitas doradas blur */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+     /* background: radial-gradient(circle at 10% 20%, rgb(92, 204, 0) 0%, transparent 20%),
+                  radial-gradient(circle at 80% 30%, rgb(1, 4, 187) 0%, transparent 25%),
+                  radial-gradient(circle at 30% 70%, rgb(204, 0, 0) 0%, transparent 15%),
+                  radial-gradient(circle at 70% 80%, rgb(146, 0, 204) 0%, transparent 20%); */
+      background: radial-gradient(circle at 10% 20%, rgb(146, 0, 204) 0%, transparent 20%),
+                  radial-gradient(circle at 80% 30%, rgb(146, 0, 204) 0%, transparent 25%),
+                  radial-gradient(circle at 30% 70%, rgb(146, 0, 204) 0%, transparent 15%),
+                  radial-gradient(circle at 70% 80%, rgb(146, 0, 204) 0%, transparent 20%);
+      background-size: cover;
+      opacity: 0.15;
+      filter: blur(15px);
+      z-index: 0;
+      animation: pulseDots 10s infinite alternate;
+    }
+
+    @keyframes pulseDots {
+      0% { transform: scale(1); opacity: 0.15; }
+      100% { transform: scale(1.05); opacity: 0.25; }
+    }
+
+    /* Partículas animadas (luces suaves) */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 12s linear infinite;
+      opacity: 0.6;
+      filter: blur(1.5px);
+    }
+
+    .particle:nth-child(2) { background: radial-gradient(circle, #f8bbd0 0%, transparent 70%); animation-delay: 2s; }
+    .particle:nth-child(3) { background: radial-gradient(circle, #ffffff 0%, transparent 70%); animation-delay: 4s; }
+    .particle:nth-child(4) { background: radial-gradient(circle, #ffb6c1 0%, transparent 70%); animation-delay: 6s; }
+    .particle:nth-child(5) { background: radial-gradient(circle, #fffacd 0%, transparent 70%); animation-delay: 8s; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      30% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    #play-audio-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      font-size: 16px;
+      display: none; /* Oculto por defecto */
+      z-index: 1000;
+      -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+    }
+
+    #play-audio-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+      @keyframes fadeOutAndShrink {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    #play-audio-btn.pressed {
+      animation: fadeOutAndShrink 0.5s forwards;
+    }
+    
+@keyframes colorShift {
+  0%, 100% {
+    color: #ffd700;
+    border-image: linear-gradient(to right, transparent, #ffd700, transparent) 1;
+  }
+  50% {
+    color: #a27aff;
+    border-image: linear-gradient(to right, transparent, #a27aff, transparent) 1;
+  }
+}
+
+#custom-action-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: rgb(197, 49, 255);
+  background: transparent;
+  border: 2px solid;
+  border-image: linear-gradient(to right, transparent, rgb(146, 0, 204), transparent) 1;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  box-sizing: border-box;
+
+  animation: colorShift 4s ease-in-out infinite;
+  color: rgb(146, 0, 204);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+}
+
+@keyframes colorShift {
+  0%, 100% {
+    border-color: rgb(236, 236, 236);
+    color: rgb(228, 228, 228);
+  }
+  50% {
+    border-color: #ba84f3;
+    color: #ba79ff;
+  }
+}
+
+
+#custom-action-btn:hover {
+  /* Opcional: pausa animación y cambia a blanco al hacer hover */
+  animation-play-state: paused;
+  color: #fff;
+  border-image: linear-gradient(to right, transparent, #fff, transparent) 1;
+}
+
+/* Contenedor para posicionar partículas */
+.sparkle-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Cada partícula */
+.sparkle {
+  position: absolute;
+  bottom: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(1px);
+  color: inherit; /* toma el color del botón */
+  background: radial-gradient(circle, currentColor 0%, transparent 80%);
+  animation: rise 2s ease-in-out infinite, colorShift 4s ease-in-out infinite;
+  
+}
+
+/* Posiciones iniciales aleatorias */
+.sparkle:nth-child(1) { left: 20%; animation-delay: 0s; }
+.sparkle:nth-child(2) { left: 40%; animation-delay: 0.5s; }
+.sparkle:nth-child(3) { left: 60%; animation-delay: 1s; }
+.sparkle:nth-child(4) { left: 80%; animation-delay: 1.5s; }
+.sparkle:nth-child(5) { left: 50%; animation-delay: 2s; }
+
+/* Animación de subida */
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+
+.titulo-xv {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  text-align: center;
+  color: rgb(195, 45, 255);
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  animation: fadeSlideIn 1.2s ease forwards;
+
+  /* Sombra de texto para dar un efecto más mágico */
+  text-shadow: 2px 2px 4px rgba(128, 0, 192, 0.4);
+}
+
+/* Línea decorativa brillante */
+.titulo-xv::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, #d633ff, #9100d4, #d633ff);
+  border-radius: 5px;
+  animation: shine 3s infinite linear;
+}
+    /* Efecto de brillo */
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      animation: fadeZoom 1.5s ease;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      text-align: center;
+        color: #ffd700;
+      margin-bottom: 1.5rem;
+      animation: bounceIn 1.5s ease;
+    }
+    
+
+
+
+    .photo {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      animation: slideInLeft 1.5s ease;
+    }
+
+   .photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  
+  /* Máscara con un gradiente vertical más suave */
+  mask-image: linear-gradient(to bottom, black 75%, rgba(0, 0, 0, 0.6) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, rgba(0, 0, 0, 0.6) 85%, transparent 100%);
+}
+
+    .photo img:hover {
+      transform: scale(0.95);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al hacer hover */
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      text-align: center;
+      animation: fadeInUp 1.8s ease;
+      color: #fff;
+    }
+
+    .highlight {
+      color: rgb(209, 94, 255);
+      font-weight: bold;
+    }
+
+    .location {
+      margin: 2rem 0;
+      padding: 1rem;
+      background: rgba(255, 215, 0, 0.1);
+      border: 2px dashed gold;
+      border-radius: 12px;
+      text-align: center;
+      font-style: italic;
+      animation: pulseIn 2s ease;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    .Nombre{
+              font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      text-align: center;
+      color: white;
+      margin-bottom: 1.5rem;
+      animation: bounceIn 1.5s ease;
+    }
+    /* Animaciones */
+    @keyframes fadeZoom {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { opacity: 1; transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes pulseIn {
+      0% { transform: scale(0.95); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+    
+    .location {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(247, 0, 255, 0.1);
+  border: 2px dashed rgb(146, 0, 204);
+  border-radius: 12px;
+  text-align: center;
+  font-style: italic;
+  animation: pulseIn 2s ease;
+  
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap; /* para que en pantallas pequeñas bajen */
+}
+
+.location iframe {
+  flex: 1 1 45%; /* crecen y no pasan del 45% */
+  min-width: 280px; /* tamaño mínimo para no achicarse demasiado */
+  height: 300px;
+  border: 0;
+  border-radius: 12px;
+}
+
+   #countdown {
+      font-size: 2em;
+      color: #ffffff;
+    }
+
+    /* Estilos para el formulario */
+    .rsvp-form {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgb(146, 0, 204);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+      color: #fff;
+    }
+    .rsvp-form h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    .rsvp-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .rsvp-form input[type="text"],
+    .rsvp-form input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid rgb(195, 42, 255);
+      border-radius: 6px;
+      background: transparent;
+      color: #fff;
+    }
+    .rsvp-form input[type="radio"] {
+      margin-right: 0.5rem;
+    }
+    .rsvp-form input[type="submit"] {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.7rem;
+      font-size: 1rem;
+      background: transparent;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      color: #ffd700;
+      cursor: pointer;
+      animation: colorShift 4s ease-in-out infinite;
+    }
+    .rsvp-form input[type="submit"]:hover {
+      animation-play-state: paused;
+      color: #fff;
+      border-color: #fff;
+    }
+
+.rsvp-form {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+
+
+/* Animación del botón al hacer clic */
+#custom-action-btn:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+.animated-container {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: auto;
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 16px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+
+}
+
+/* Cuando queremos ocultarla */
+.animated-container.hidden {
+  opacity: 1;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+.dress-code {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(162, 0, 211, 0.05);
+  border-left: 4px solid rgb(146, 0, 204);
+  border-radius: 8px;
+  text-align: center;
+  animation: fadeInUp 1s ease;
+}
+
+.dress-code h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: rgb(213, 106, 255);
+  margin-bottom: 0.5rem;
+}
+
+.dress-code p {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+#msjFin{
+   font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: rgb(213, 106, 255);
+  margin-bottom: 0.5rem;
+}
+
+.leaves {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Debajo de .container */
+}
+
+.leaf {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: url('https://img.icons8.com/?size=100&id=24978&format=png&color=7950F2') no-repeat center/contain;
+  opacity: 0.2;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+  </style>
+</head>
+<body>
+<div class="leaves"></div>
+
+  <!-- Partículas decorativas -->
+  <div class="particles">
+    <div class="particle" style="left: 10%; animation-duration: 12s;"></div>
+    <div class="particle" style="left: 30%; animation-duration: 14s;"></div>
+    <div class="particle" style="left: 50%; animation-duration: 10s;"></div>
+    <div class="particle" style="left: 70%; animation-duration: 16s;"></div>
+    <div class="particle" style="left: 90%; animation-duration: 18s;"></div>
+  </div>
+
+  <div class="container">
+      <br>
+   <h1 class="titulo-xv">Mis XV Años</h1>
+
+  
+  
+
+
+
+    <div class="photo">
+      <img src="0-13.jpg" alt="Foto de la quinceañera">
+    </div>
+
+    <p>Con inmensa alegría, te invito a celebrar mis <span class="highlight">XV años</span>, un día muy especial que quiero compartir contigo.</p>
+
+    <p>Te espero el <span class="highlight">18 de Julio de 2025</span> a las <span class="highlight">6:00 PM</span> en la Parroquia "Padre Celestial" y en el Salón de Eventos Mi Mágico Sueño, de <span class="highlight">7 PM a 12 PM</span> para una noche mágica llena de recuerdos inolvidables.</p>
+
+    <div class="photo">
+      <img src="0-17.jpg" alt="Otra imagen decorativa">
+    </div>
+    
+    <p>Con la Bendicion de Dios y mis Padres:</p> <br>
+    <p><span class="Nombre">Lino Sanchez</span></p> 
+    <p><span class="Nombre">&</span></p> 
+    <p><span class="Nombre">Georgina Antonio</span></p> <br>
+    <p>Tenemos el honor de invitar cordialmente a usted y a su apreciable familia a la celebración de los quince años de nuestra amada hija, ocasión en la que agradeceremos contar con su presencia para compartir tan significativo evento, que se llevara a cabo en:</p> 
+    
+
+ <div class="location">
+    <p id="txt1">Parroquia "Padre Celestial" y Salón de Eventos Mi Mágico Sueño</p>
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.973310256564!2d-97.8636806134224!3d22.31684912726741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d7f9448898737b%3A0x1e9f1263377027fb!2sParroquia%20%22Padre%20Celestial%22!5e0!3m2!1ses-419!2smx!4v1749753375051!5m2!1ses-419!2smx"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+   <div class="photo">   <img src="Parroquia.png">  </div>
+
+  <p>Ghana 327, Solidaridad, 89317 Tampico, Tamps.</p>
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230.69655251082648!2d-97.87382068700806!3d22.310361342701004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d7fbe06cffe4e1%3A0xd95e1292d00562ec!2sSal%C3%B3n%20de%20Eventos%20Mi%20M%C3%A1gico%20Sue%C3%B1o!5e0!3m2!1ses-419!2smx!4v1749752928532!5m2!1ses-419!2smx"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+   <div class="photo">   <img src="salon.png">  </div>
+  <p>1a. Avenida 317, Laguna de La Puerta, 89310 Tampico, Tamps.</p>
+</div>
+
+<div class="dress-code">
+  <h2>Código de Vestimenta</h2>
+  <p>Para este evento pueden asistir a como sea de su preferencia, sin embargo favor de <span class="highlight">EVITAR EL USO DE PRENDAS COLOR MORADO O SUBTONOS LILA</span> para esta ocasión tan especial.</p>
+</div>
+
+
+      <!-- Botón adicional que no desaparece ni ejecuta nada -->
+  <center> 
+  <button id="custom-action-btn">
+  Confirma tu Asistencia Debajo
+  <span class="sparkle-container">
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
+    <span class="sparkle"></span>
+  </span>
+</button> 
+</center>
+
+  </div>
+
+ <button id="play-audio-btn">
+  Activar música   <img src="bts-logo.svg" width="15px" height="15px" style="vertical-align: middle;">
+</button>
+
+
+   <audio id="bg-audio" loop>
+    <source src="CancionFondo.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bg-audio");
+    const playButton = document.getElementById("play-audio-btn");
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      playButton.style.display = "block";
+
+      playButton.addEventListener("click", () => {
+        audio.volume = 0.2;
+        audio.play();
+
+        // Añadir clase para animar
+        playButton.classList.add("pressed");
+
+        // Ocultar el botón después de la animación
+        playButton.addEventListener("animationend", () => {
+          playButton.style.display = "none";
+        }, { once: true });
+      });
+    } else {
+      window.addEventListener("load", () => {
+        audio.volume = 0.2;
+        audio.play().catch(err => {
+          console.warn("Reproducción bloqueada:", err);
+        });
+      });
+    }
+  </script>
+   <!-- Formulario añadido -->
+    <br>
+  <div class="animated-container" id="main-container">
+    <form class="rsvp-form"
+          action="https://formspree.io/f/mpwrdonv"
+          method="POST"
+          onsubmit="return prepararRSVP()">
+      <h2>Rellena los Datos</h2>
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="cantidad">¿Cuántas personas irán? (Contandote a ti)</label>
+      <input type="number" id="cantidad" name="cantidad" min="1" required>
+
+      <label>¿Asistirá?</label>
+      <input type="radio" id="asistira_si" name="asistira" value="Sí" required>
+      <label for="asistira_si" style="display:inline; margin-right:1rem;">Sí</label>
+      <input type="radio" id="asistira_no" name="asistira" value="No">
+      <label for="asistira_no" style="display:inline;">No</label>
+
+      <input type="hidden" name="message" id="mensaje">
+      <input type="hidden" name="_subject" id="asunto">
+
+      <input type="submit" value="Enviar Confirmación">
+    </form>
+    <br>
+    <br>
+      <p>Con cariño,<br><span class="Nombre">Jimena</span></p>
+  
+    
+  </div>
+
+
+
+  <script>
+    function prepararRSVP() {
+      const nombre = document.getElementById("nombre").value;
+      const cantidad = document.getElementById("cantidad").value;
+      const asistira = document.querySelector('input[name="asistira"]:checked').value;
+
+      document.getElementById("asunto").value = `Confirmación – ${cantidad} persona(s)`;
+
+      document.getElementById("mensaje").value =
+        `Este mensaje fue generado automáticamente. Por favor, no edites este contenido.\n\n` +
+        `Nombre: ${nombre}\n` +
+        `Número de personas: ${cantidad}\n` +
+        `¿Asiste?: ${asistira}`;
+
+      return true;
+    }
+  </script>
+  <br>
+  <center> 
+    <p id="msjFin">Nos vemos en: </p>
+    <div id="countdown">Cargando...</div></center>
+ 
+    <script>
+    // Fecha objetivo: 18 de julio de 2025 a las 18:00 (6:00 PM)
+    const targetDate = new Date("2025-07-18T18:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "¡Ya llegó el 18 de julio de 2025!";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Llama una vez para no esperar 1 segundo
+  </script>
+  
+  <script>
+  const leavesContainer = document.querySelector('.leaves');
+
+  for (let i = 0; i < 8; i++) {
+    const leaf = document.createElement('div');
+    leaf.classList.add('leaf');
+
+    // Estilo aleatorio
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leaf.style.animationDuration = (5 + Math.random() * 12) + 's';
+    leaf.style.animationDelay = Math.random() * 0 + 's';
+    leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+    leavesContainer.appendChild(leaf);
+  }
+</script>
+
+</body>
+</html>
